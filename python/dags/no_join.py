@@ -7,8 +7,10 @@
  # *  *  *  *  *  command to be executed
 
 import pendulum
+import pprint
 
 from airflow import DAG, Dataset
+from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
 
 name = "xyz"
@@ -17,22 +19,29 @@ ods_dst = Dataset(f"s3://bucket/{name}_ods")
 dwd_dst = Dataset(f"s3://bucket/{name}_dwd")
 dwm_dst = Dataset(f"s3://bucket/{name}_dwm")
 
+def print_context(**kwargs):
+    pprint.pprint(kwargs)
+
 with DAG(
     dag_id=f"{name}_ods",
     start_date=pendulum.datetime(2023, 1, 1, tz="UTC"),
     schedule="0 1 * * *",
 ) as dag:
-    BashOperator(outlets=[ods_dst], task_id="task_ods", bash_command="echo ods on {{ ds }}")
+    PythonOperator(
+        task_id="task_ods",
+        outlets=[ods_dst],
+        python_callable=print_context
+    )
 
 with DAG(
     dag_id=f"{name}_dwd",
     start_date=pendulum.datetime(2023, 1, 1, tz="UTC"),
     schedule=[ods_dst],
 ) as dag:
-    BashOperator(
-        outlets=[dwd_dst],
+    PythonOperator(
         task_id="task_dwd",
-        bash_command="echo dwd on {{ ds }}",
+        outlets=[dwd_dst],
+        python_callable=print_context
     )
 
 with DAG(
@@ -41,7 +50,7 @@ with DAG(
     schedule=[dwd_dst],
 ) as dag:
     BashOperator(
-        outlets=[dwm_dst],
         task_id="task_dwm",
-        bash_command="echo dwm on {{ ds }}",
+        outlets=[dwm_dst],
+        bash_command="echo {{ data_interval_start | ds }}",
     )
