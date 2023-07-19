@@ -6,6 +6,6 @@ pex_binary(
     name = "pex", 
     dependencies=[
         ":cli",
-        "//python/dags:sources"
+        "airflow/dags:sources"
     ]
 )

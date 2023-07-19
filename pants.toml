@@ -6,7 +6,7 @@ backend_packages.add = [
 ]
 
 [source]
-root_patterns = ["python", "airflow"]
+root_patterns = ["airflow"]
 
 [python]
 interpreter_constraints = ["==3.10.*"]
