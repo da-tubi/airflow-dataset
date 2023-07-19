@@ -23,8 +23,14 @@ xmake l python.lua
 ```
 
 ## One Step Guide to launch Airflow
+Bash:
 ```
 bin/install_airflow && bin/airflow_config && airflow standalone
+```
+
+Elvish:
+```
+bin/install_airflow ; bin/airflow_config ; airflow standalone
 ```
 
 ## Step-by-step Guide to launch Airflow
