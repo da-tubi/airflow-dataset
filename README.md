@@ -2,13 +2,13 @@
 This repo could be separated into two parts:
 + The Airflow Infra described below
 + The demo dags to explore airflow dataset
-  + Partition: `data_interval_start | ds`
-  + Backfill
+  + [DONE] Partition: `data_interval_start | ds`
+  + [DONE] Backfill
     + clear can not trigger dataset
     + manually trigger can trigger dataset
-  + TODO: join
-  + TODO: daily to weekly
-  + TODO: when not triggerred, should be an alert
+  + [TODO] join
+  + [DONE] daily to weekly
+  + [TODO] when not triggerred, should be an alert
 
 ## Install Pants and Python
 1. Install Pants: https://www.pantsbuild.org/docs/installation
