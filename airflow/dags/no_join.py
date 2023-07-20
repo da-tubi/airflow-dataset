@@ -5,7 +5,7 @@ from airflow import DAG, Dataset
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
 
-name = "xyz"
+name = "no_join_xyz"
 
 ods_dst = Dataset(f"s3://bucket/{name}_ods")
 dwd_dst = Dataset(f"s3://bucket/{name}_dwd")
