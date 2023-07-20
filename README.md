@@ -6,9 +6,9 @@ This repo could be separated into two parts:
   + [DONE] Backfill
     + clear can not trigger dataset
     + manually trigger can trigger dataset
-  + [TODO] join
+  + [DONE] How to trigger by multiple datasets
   + [DONE] daily to weekly
-  + [TODO] when not triggerred, should be an alert
+  + [DONE] when not triggerred, should be an alert
 
 ## Install Pants and Python
 1. Install Pants: https://www.pantsbuild.org/docs/installation
