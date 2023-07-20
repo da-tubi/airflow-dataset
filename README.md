@@ -30,7 +30,7 @@ bin/install_airflow && bin/airflow_config && airflow standalone
 
 Elvish:
 ```
-bin/install_airflow ; bin/airflow_config ; airflow standalone
+bin/launch
 ```
 
 ## Step-by-step Guide to launch Airflow
